@@ -93,7 +93,7 @@ def edit_files():
     data = Data.query.all()
     print('sono3')
     print(data)
-    files.append(data.file_path)
+    files.append(data[-1].file_path)
     print('sono4')
     print(files)
     #file_pathが格納されたリストをred_file()関数に渡す
