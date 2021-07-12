@@ -72,17 +72,27 @@ def register():
 @app.route('/delete/<int:id>', methods=['GET'])
 #delete関数に引数idを与える
 def delete(id):
+    print('sono1')
     #データベースから該当するデータを取得
     data = Data.query.get(id)
+    print('sono2')
+    print(data)
     #staticフォルダからも削除するためfile_pathを取得
     delete_file = data.file_path
+    print('sono3')
+    print(delete_file)
     #データベースに登録する手順と逆の処理
     db.session.delete(data)
+    print('sono4')
     db.session.commit()
+    print('sono5')
     #staticディレクトリから該当ファイルを削除
     os.remove(delete_file)
+    print('sono6')
+    print(delete_file)
     #処理を終えたらトップページに返す
     return redirect(url_for('index'))
+    print('sono7')
 
 @app.route('/edit', methods=["POST"])
 def edit_files():
